@@ -1,6 +1,6 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#151428"><title>億點靈 AI 小夥伴 V0.4</title><style>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#151428"><title>億點靈 AI 小夥伴 V0.5.1</title><style>
 :root{color-scheme:dark;--bg:#111021;--card:#222039;--edge:#484360;--text:#f7f3ff;--muted:#c3bcda;--accent:#aa91ff}*{box-sizing:border-box}body{margin:0;font-family:system-ui,'Noto Sans TC',sans-serif;background:radial-gradient(circle at top,#383064,#111021 64%);color:var(--text);min-height:100dvh}main{max-width:640px;margin:auto;padding:24px 15px 90px}header{display:flex;align-items:center;justify-content:space-between}h1{font-size:23px;margin:0}small,p{color:var(--muted)}.pill{font-size:12px;border:1px solid #7d70ba;border-radius:99px;padding:6px 10px}.panel{background:#25213bdc;border:1px solid #534b73;border-radius:22px;padding:18px;margin-top:16px;box-shadow:0 12px 30px #0003}.avatar{height:230px;display:grid;place-items:center;position:relative}.person{font-size:108px;filter:drop-shadow(0 15px 16px #08071099);transition:transform .3s}.person.bounce{transform:translateY(-18px) rotate(-4deg)}.glow{position:absolute;width:180px;height:180px;background:#7d5ed577;filter:blur(60px);border-radius:50%;z-index:-1}.name{text-align:center;font-size:22px;font-weight:750}.type{text-align:center;color:#cfc4f6;font-size:13px;margin-top:4px}.bubble{border-radius:16px;background:#3b335c;padding:13px;margin:15px 0;min-height:52px;line-height:1.6}button,input,select{font:inherit}button{background:#7658d8;border:0;color:white;border-radius:13px;padding:11px 13px;font-weight:650;cursor:pointer}button.secondary{background:#403a5d}button:disabled{opacity:.5}input,select{background:#17162b;border:1px solid #655b86;border-radius:12px;color:white;padding:12px;min-width:0;width:100%}.controls{display:flex;gap:8px;flex-wrap:wrap}.controls>*{flex:1}.rolegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.role{background:#342d4f;min-height:90px;padding:8px 4px;border:1px solid transparent}.role.active{border-color:#caafff;background:#5a427f}.role span{display:block;font-size:30px;margin-bottom:5px}.role small{font-size:11px;color:#e3daf6}.row{display:flex;gap:8px;margin-top:9px}.row input{flex:1}.row button{white-space:nowrap}.log{max-height:180px;overflow-y:auto}.msg{margin:8px 0;padding:9px 12px;border-radius:12px;background:#302b47}.msg.me{background:#473b72}.reminder{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #554b70;padding:10px 0;gap:8px}.reminder div{min-width:0;overflow-wrap:anywhere}.reminder small{display:block}.sectiontitle{font-size:16px;font-weight:750;margin:0 0 12px}.hint{line-height:1.5;font-size:12px}.footer{margin-top:20px;font-size:12px;text-align:center;color:#b5aecd}label{font-size:13px;color:#ddd4f3;display:block;margin:8px 0 5px}input[type=checkbox]{width:auto;accent-color:#a88dff}.toggle{display:flex;gap:8px;align-items:center;margin:12px 0}.sr{position:absolute;left:-9999px}@media(max-width:350px){.rolegrid{grid-template-columns:repeat(2,1fr)}}
-.person{font-size:0;width:180px;height:230px;overflow:hidden;border-radius:22px;filter:drop-shadow(0 12px 18px #09071799)}.person img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 18%;border-radius:22px}.person.bounce{transform:translateY(-10px)}.role img{width:100%;height:75px;object-fit:cover;object-position:center 15%;border-radius:9px;display:block;margin-bottom:5px}.role{min-height:115px}.role small{overflow-wrap:anywhere}.hint.warning{color:#ffdeb0}.subcard{background:#312946;border:1px solid #53466f;border-radius:12px;padding:10px;margin-top:10px}.alias-list{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.aliaschip{padding:5px 9px;font-size:12px;border-radius:20px;background:#4e3b73;border:1px solid #7868ad}.aliaschip button{background:transparent;padding:0 0 0 8px}.mini{font-size:12px}.voice-ctrl{display:grid;grid-template-columns:1fr 1fr;gap:10px}.voice-ctrl input{width:100%}input[type=range]{accent-color:#a88dff;padding:0}.portrait-note{font-size:12px;color:#dbccf2;text-align:center;margin-top:4px}</style></head><body><main><header><h1>✨ 億點靈 AI 小夥伴</h1><div class="pill">V0.5.0 情緒語音實驗室</div></header><p class="hint">本頁不連接 Strata；語音辨識可能由瀏覽器的線上服務處理。按下說話才啟動單次辨識；關閉頁面後無法保證提醒持續運作。</p><section class="panel"><div class="avatar"><div class="glow"></div><div class="person" id="person" aria-label="角色人物圖片"></div></div><div class="name" id="who"></div><div class="type" id="type"></div><div class="bubble" id="bubble" role="status">你好，我在這裡！</div><div class="controls"><button id="greet">👋 打招呼</button><button id="speak" class="secondary">🔊 語音回覆</button><button id="mic" class="secondary">🎙️ 按下說話</button></div><p class="hint">🎤 按下說話後可說：「沐晴出來」、「叫星璃出來」、「億點靈，切換月汐」。每位角色都可以改名；不支援背景自動喚醒。常見同音字如「安和」對應安禾、「心理」對應星璃。請說完整指令如「叫心理出來」，避免誤判日常談話。</p><p class="hint" id="speechStatus">語音依瀏覽器及系統服務支援情況而定；部分語音辨識可能使用網路。</p></section>
+.person{font-size:0;width:180px;height:230px;overflow:hidden;border-radius:22px;filter:drop-shadow(0 12px 18px #09071799)}.person img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 18%;border-radius:22px}.person.bounce{transform:translateY(-10px)}.role img{width:100%;height:75px;object-fit:cover;object-position:center 15%;border-radius:9px;display:block;margin-bottom:5px}.role{min-height:115px}.role small{overflow-wrap:anywhere}.hint.warning{color:#ffdeb0}.subcard{background:#312946;border:1px solid #53466f;border-radius:12px;padding:10px;margin-top:10px}.alias-list{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.aliaschip{padding:5px 9px;font-size:12px;border-radius:20px;background:#4e3b73;border:1px solid #7868ad}.aliaschip button{background:transparent;padding:0 0 0 8px}.mini{font-size:12px}.voice-ctrl{display:grid;grid-template-columns:1fr 1fr;gap:10px}.voice-ctrl input{width:100%}input[type=range]{accent-color:#a88dff;padding:0}.portrait-note{font-size:12px;color:#dbccf2;text-align:center;margin-top:4px}</style></head><body><main><header><h1>✨ 億點靈 AI 小夥伴</h1><div class="pill">V0.5.1 八角色聲線收藏庫</div></header><p class="hint">本頁不連接 Strata；語音辨識可能由瀏覽器的線上服務處理。按下說話才啟動單次辨識；關閉頁面後無法保證提醒持續運作。</p><section class="panel"><div class="avatar"><div class="glow"></div><div class="person" id="person" aria-label="角色人物圖片"></div></div><div class="name" id="who"></div><div class="type" id="type"></div><div class="bubble" id="bubble" role="status">你好，我在這裡！</div><div class="controls"><button id="greet">👋 打招呼</button><button id="speak" class="secondary">🔊 語音回覆</button><button id="mic" class="secondary">🎙️ 按下說話</button></div><p class="hint">🎤 按下說話後可說：「沐晴出來」、「叫星璃出來」、「億點靈，切換月汐」。每位角色都可以改名；不支援背景自動喚醒。常見同音字如「安和」對應安禾、「心理」對應星璃。請說完整指令如「叫心理出來」，避免誤判日常談話。</p><p class="hint" id="speechStatus">語音依瀏覽器及系統服務支援情況而定；部分語音辨識可能使用網路。</p></section>
 <section class="panel"><h2 class="sectiontitle">🎭 八位角色</h2><div class="rolegrid" id="roles"></div><label for="rename">目前角色的名稱（可隨時改）</label><div class="row"><input id="rename" maxlength="16" placeholder="輸入角色名稱"><button id="saveName">儲存名字</button></div><div class="subcard"><label>🖼️ 角色圖片</label><input id="portraitInput" type="file" accept="image/png,image/jpeg,image/webp"><button id="resetPortrait" class="secondary mini">還原預設圖片</button><p class="hint">2、3、5、6、8 號使用已選定的人物圖；1、4、7 號已更新為你選定的角色圖。你可以為每位角色上傳新圖片（圖片保存在這台手機此網站）。圖片建議小於 1 MB。</p></div><p class="hint">語音測試：按「🎙️ 按下說話」，直接叫角色名字或說「叫若薇出來」。每位角色固定 ID（role_01～role_08），改名不會更換 ID。</p><div class="subcard"><h2 class="sectiontitle">🎙️ 角色專屬聲線</h2><label for="voiceSelect">目前角色使用的系統語音</label><select id="voiceSelect"></select><div class="voice-ctrl"><div><label for="rate">語速：<span id="rateText"></span></label><input type="range" id="rate" min="0.7" max="1.3" step="0.05"></div><div><label for="pitch">音調：<span id="pitchText"></span></label><input type="range" id="pitch" min="0.7" max="1.5" step="0.05"></div></div><div class="voice-ctrl"><div><label for="volume">音量：<span id="volumeText"></span></label><input type="range" id="volume" min="0" max="1" step="0.05"></div><div><label for="voiceStyle">聲音風格預設</label><select id="voiceStyle"><option value="custom">自訂</option><option value="soft">輕柔</option><option value="bright">明亮</option><option value="calm">沉穩</option><option value="lively">元氣</option><option value="dreamy">夢幻</option></select></div></div><label for="previewText">試聽文字</label><input id="previewText" maxlength="120" value="你好，很高興見到你。今天想聊些什麼呢？"><div class="row"><button id="voicePreview" class="secondary">試聽目前角色</button><button id="voiceReset" class="secondary">還原聲線</button></div><p class="hint">實際音色由手機已安裝的中文 TTS 聲音決定，預設風格只調整語速與音調，音量可單獨設定；不等於真實情緒、氣聲、笑聲或聲紋轉換。</p></div><div class="subcard" id="emotionLab">
 <h2 class="sectiontitle">🎭 V0.5 情緒語音實驗室</h2>
 <label for="emotion">情緒語氣</label>
@@ -17,6 +17,14 @@
 <select id="situation"><option value="chat">日常聊天</option><option value="morning">早安</option><option value="night">晚安</option><option value="reminder">正式提醒</option></select>
 <div class="row"><button id="emotionPreview" class="secondary">試聽情緒語音</button><button id="emotionStop" class="secondary">停止播放</button></div>
 <p class="hint" id="emotionStatus">各角色設定會保存在本機。這一版用原生 TTS 的語速、音調與分句停頓模擬情緒，不提供真實氣聲或情緒音色。</p>
+</div><div class="subcard" id="voiceGallery">
+<h2 class="sectiontitle">🎧 八角色聲線收藏庫</h2>
+<p class="hint">試聽指定角色，不會更換你正在使用的角色。優先試出手機上不同的繁體中文聲音；如果系統只有同一種聲音，音高、語速改變不等於八種真人聲線。</p>
+<label for="galleryLine">試聽內容</label>
+<select id="galleryLine"><option value="hello">角色專屬自我介紹</option><option value="same">八人相同句子（對照）</option><option value="reminder">正式提醒語氣</option><option value="goodnight">晚安語氣</option></select>
+<div class="rolegrid" id="voiceGalleryBtns"></div>
+<p class="hint" id="galleryStatus">點選下方任一角色試聽；也能設定為目前角色。</p>
+<div class="row"><button id="galleryStop" class="secondary">停止播放</button><button id="galleryVoiceInfo" class="secondary">查看系統聲線數量</button></div>
 </div><div class="subcard"><h2 class="sectiontitle">🔤 目前角色的語音別名</h2><div id="aliasList" class="alias-list"></div><div class="row"><input id="aliasInput" maxlength="20" placeholder="例如：心理"><button id="aliasAdd">新增別名</button></div><p class="hint">辨識錯字可以加入別名，切換指令像「叫心理出來」即可呼叫星璃。為避免誤觸，不會在一般聊天提到同音詞時任意切換。</p></div></section>
 <section class="panel"><h2 class="sectiontitle">💬 文字互動測試</h2><div class="log" id="chatlog"></div><div class="row"><input id="chatinput" maxlength="160" placeholder="例：你好、你叫什麼名字？"><button id="send">送出</button></div><p class="hint">目前是離線規則式示範，尚不是會推理的 AI。真正本地模型將在後續版本整合。</p></section>
 <section class="panel"><h2 class="sectiontitle">⏰ 本機提醒清單</h2><label for="task">提醒內容</label><input id="task" maxlength="100" placeholder="例：喝水、開會、取包裹"><label for="when">提醒時間（手機當地時間）</label><input type="datetime-local" id="when"><div class="row"><button id="add">新增提醒</button><button class="secondary" id="test">測試提醒音效</button></div><div id="reminders"></div><p class="hint">重要：目前只會在本頁開啟且瀏覽器允許執行時檢查提醒，不可取代手機鬧鐘。背景／鎖屏提醒會在 Android APK 使用系統排程實作。</p></section>
@@ -137,7 +145,7 @@ function draw(){data.selected=Math.max(0,Math.min(7,Number(data.selected)||0));c
  $('emotion').value=ec.emotion;$('intensity').value=ec.intensity;
  $('intensityText').textContent=ec.intensity+'%';
  $('pauseMode').value=ec.pause;$('situation').value=ec.situation;
- drawAliases();drawReminders();drawChat()}
+ drawAliases();drawReminders();drawChat();drawVoiceGallery()}
 function drawReminders(){$('reminders').innerHTML=data.reminders.length?data.reminders.slice().sort((a,b)=>a.at-b.at).map(r=>`<div class="reminder"><div><strong>${esc(r.text)}</strong><small>${new Date(r.at).toLocaleString('zh-TW')} ${r.done?'✅ 已提醒':''}</small></div><button class="secondary" data-del="${esc(r.id)}">刪除</button></div>`).join(''):'<p class="hint">還沒有提醒事項</p>'}
 function drawChat(){$('chatlog').innerHTML=data.chat.slice(-12).map(x=>`<div class="msg ${x.me?'me':''}">${x.me?'你':'角色'}：${esc(x.text)}</div>`).join('')||'<p class="hint">試著打個招呼吧</p>'; $('chatlog').scrollTop=$('chatlog').scrollHeight}
 $('roles').onclick=e=>{const b=e.target.closest('[data-i]');if(!b)return;data.selected=Number(b.dataset.i);save();draw();say('你好，我是'+data.names[data.selected]+'。很高興見到你！',true)};
@@ -210,6 +218,49 @@ $('emotionPreview').onclick=()=>{
  say(texts[e.situation],true,e.situation);
 };
 $('emotionStop').onclick=()=>{speechSequence++;if('speechSynthesis'in window)speechSynthesis.cancel();$('emotionStatus').textContent='已停止播放'};
+const characterVoiceLines=[
+ '嗨，我是沐晴。今天也很開心能陪著你。',
+ '你好，我是若薇。有什麼事情需要我幫你安排嗎？',
+ '我是月汐。夜色溫柔，願你有個好心情。',
+ '哈囉！我是樂橙。今天也要活力滿滿喔！',
+ '我是凜霜。有需要就直接告訴我。',
+ '星璃已就緒。我會清楚整理你需要的資訊。',
+ '你好，我是安禾。辛苦了，先讓自己休息一下。',
+ '嗨，我是綺洛。今天想來點不一樣的驚喜嗎？'
+];
+function drawVoiceGallery(){
+ $('voiceGalleryBtns').innerHTML=data.names.map((n,i)=>'<button class="role'+(i===data.selected?' active':'')+'" data-voice-role="'+i+'">'+(i+1)+'｜'+esc(n)+'<small>▶ 試聽</small></button>').join('');
+}
+function gallerySpeak(index){
+ if(!data.voice){$('galleryStatus').textContent='請先在隱私設定啟用文字轉語音';return}
+ if(!('speechSynthesis' in window)){$('galleryStatus').textContent='瀏覽器不支援文字轉語音';return}
+ const mode=$('galleryLine').value;
+ let msg=mode==='same'?'你好，很高興見到你。今天有什麼事情需要幫忙嗎？':
+ mode==='reminder'?'提醒你，今天有一件重要的事情需要處理。':
+ mode==='goodnight'?'晚安。今天辛苦了，希望你今晚睡得安穩。':characterVoiceLines[index];
+ speechSequence++;speechSynthesis.cancel();
+ const cfg=data.voiceConfig[index]||{rate:1,pitch:1,volume:1};
+ const emo=data.emotionConfig[index]||{emotion:'natural',intensity:55,situation:'chat'};
+ const mod=emotionChanges[emo.emotion]||[0,0];const factor=(Number(emo.intensity)||0)/100;
+ const context=mode==='reminder'?[-.05,-.06]:mode==='goodnight'?[-.11,-.04]:[0,0];
+ const utter=new SpeechSynthesisUtterance(msg);utter.lang='zh-TW';
+ utter.rate=Math.max(.6,Math.min(1.4,Number(cfg.rate)+mod[0]*factor+context[0]));
+ utter.pitch=Math.max(.6,Math.min(1.5,Number(cfg.pitch)+mod[1]*factor+context[1]));
+ utter.volume=cfg.volume??1;
+ const vs=speechSynthesis.getVoices();const assigned=vs.find(v=>v.voiceURI===cfg.voice);
+ if(assigned)utter.voice=assigned;
+ $('galleryStatus').textContent='正在試聽 '+data.names[index]+'：'+(assigned?assigned.name:'系統預設聲線');
+ utter.onerror=()=>{$('galleryStatus').textContent='試聽失敗，請確認語音引擎'};
+ utter.onend=()=>{$('galleryStatus').textContent='試聽完成：'+data.names[index]};
+ speechSynthesis.speak(utter);
+}
+$('voiceGalleryBtns').onclick=e=>{const b=e.target.closest('[data-voice-role]');if(b)gallerySpeak(Number(b.dataset.voiceRole))};
+$('galleryStop').onclick=()=>{speechSequence++;speechSynthesis.cancel();$('galleryStatus').textContent='已停止試聽'};
+$('galleryVoiceInfo').onclick=()=>{
+ const all=speechSynthesis.getVoices();const zh=all.filter(x=>/^zh/i.test(x.lang));
+ $('galleryStatus').textContent='系統提供 '+all.length+' 個聲線選項，其中中文 '+zh.length+' 個；可能有同音色的不同名稱。';
+};
+
 
 draw();say('你好！我是'+data.names[data.selected]+'。我們先從角色切換與提醒測試開始吧。');
 </script></body></html>
