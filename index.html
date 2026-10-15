@@ -1,6 +1,6 @@
-<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#151428"><title>億點靈 AI 小夥伴 V0.3</title><style>
+<!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#151428"><title>億點靈 AI 小夥伴 V0.3.1</title><style>
 :root{color-scheme:dark;--bg:#111021;--card:#222039;--edge:#484360;--text:#f7f3ff;--muted:#c3bcda;--accent:#aa91ff}*{box-sizing:border-box}body{margin:0;font-family:system-ui,'Noto Sans TC',sans-serif;background:radial-gradient(circle at top,#383064,#111021 64%);color:var(--text);min-height:100dvh}main{max-width:640px;margin:auto;padding:24px 15px 90px}header{display:flex;align-items:center;justify-content:space-between}h1{font-size:23px;margin:0}small,p{color:var(--muted)}.pill{font-size:12px;border:1px solid #7d70ba;border-radius:99px;padding:6px 10px}.panel{background:#25213bdc;border:1px solid #534b73;border-radius:22px;padding:18px;margin-top:16px;box-shadow:0 12px 30px #0003}.avatar{height:230px;display:grid;place-items:center;position:relative}.person{font-size:108px;filter:drop-shadow(0 15px 16px #08071099);transition:transform .3s}.person.bounce{transform:translateY(-18px) rotate(-4deg)}.glow{position:absolute;width:180px;height:180px;background:#7d5ed577;filter:blur(60px);border-radius:50%;z-index:-1}.name{text-align:center;font-size:22px;font-weight:750}.type{text-align:center;color:#cfc4f6;font-size:13px;margin-top:4px}.bubble{border-radius:16px;background:#3b335c;padding:13px;margin:15px 0;min-height:52px;line-height:1.6}button,input,select{font:inherit}button{background:#7658d8;border:0;color:white;border-radius:13px;padding:11px 13px;font-weight:650;cursor:pointer}button.secondary{background:#403a5d}button:disabled{opacity:.5}input,select{background:#17162b;border:1px solid #655b86;border-radius:12px;color:white;padding:12px;min-width:0;width:100%}.controls{display:flex;gap:8px;flex-wrap:wrap}.controls>*{flex:1}.rolegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.role{background:#342d4f;min-height:90px;padding:8px 4px;border:1px solid transparent}.role.active{border-color:#caafff;background:#5a427f}.role span{display:block;font-size:30px;margin-bottom:5px}.role small{font-size:11px;color:#e3daf6}.row{display:flex;gap:8px;margin-top:9px}.row input{flex:1}.row button{white-space:nowrap}.log{max-height:180px;overflow-y:auto}.msg{margin:8px 0;padding:9px 12px;border-radius:12px;background:#302b47}.msg.me{background:#473b72}.reminder{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #554b70;padding:10px 0;gap:8px}.reminder div{min-width:0;overflow-wrap:anywhere}.reminder small{display:block}.sectiontitle{font-size:16px;font-weight:750;margin:0 0 12px}.hint{line-height:1.5;font-size:12px}.footer{margin-top:20px;font-size:12px;text-align:center;color:#b5aecd}label{font-size:13px;color:#ddd4f3;display:block;margin:8px 0 5px}input[type=checkbox]{width:auto;accent-color:#a88dff}.toggle{display:flex;gap:8px;align-items:center;margin:12px 0}.sr{position:absolute;left:-9999px}@media(max-width:350px){.rolegrid{grid-template-columns:repeat(2,1fr)}}
-</style></head><body><main><header><h1>✨ 億點靈 AI 小夥伴</h1><div class="pill">V0.3 八角色命名</div></header><p class="hint">本頁不連接 Strata；語音辨識可能由瀏覽器的線上服務處理。按下說話才啟動單次辨識；關閉頁面後無法保證提醒持續運作。</p><section class="panel"><div class="avatar"><div class="glow"></div><div class="person" id="person" aria-label="虛擬人物">👩🏻</div></div><div class="name" id="who"></div><div class="type" id="type"></div><div class="bubble" id="bubble" role="status">你好，我在這裡！</div><div class="controls"><button id="greet">👋 打招呼</button><button id="speak" class="secondary">🔊 語音回覆</button><button id="mic" class="secondary">🎙️ 按下說話</button></div><p class="hint">🎤 按下說話後可說：「沐晴出來」、「叫星璃出來」、「億點靈，切換月汐」。每位角色都可以改名；不支援背景自動喚醒。</p><p class="hint" id="speechStatus">語音依瀏覽器及系統服務支援情況而定；部分語音辨識可能使用網路。</p></section>
+</style></head><body><main><header><h1>✨ 億點靈 AI 小夥伴</h1><div class="pill">V0.3.1 名稱修正版</div></header><p class="hint">本頁不連接 Strata；語音辨識可能由瀏覽器的線上服務處理。按下說話才啟動單次辨識；關閉頁面後無法保證提醒持續運作。</p><section class="panel"><div class="avatar"><div class="glow"></div><div class="person" id="person" aria-label="虛擬人物">👩🏻</div></div><div class="name" id="who"></div><div class="type" id="type"></div><div class="bubble" id="bubble" role="status">你好，我在這裡！</div><div class="controls"><button id="greet">👋 打招呼</button><button id="speak" class="secondary">🔊 語音回覆</button><button id="mic" class="secondary">🎙️ 按下說話</button></div><p class="hint">🎤 按下說話後可說：「沐晴出來」、「叫星璃出來」、「億點靈，切換月汐」。每位角色都可以改名；不支援背景自動喚醒。</p><p class="hint" id="speechStatus">語音依瀏覽器及系統服務支援情況而定；部分語音辨識可能使用網路。</p></section>
 <section class="panel"><h2 class="sectiontitle">🎭 八位角色</h2><div class="rolegrid" id="roles"></div><label for="rename">目前角色的名稱（可隨時改）</label><div class="row"><input id="rename" maxlength="16" placeholder="輸入角色名稱"><button id="saveName">儲存名字</button></div><p class="hint">語音測試：按「🎙️ 按下說話」，直接叫角色名字或說「叫若薇出來」。每位角色固定 ID（role_01～role_08），改名不會更換 ID。</p></section>
 <section class="panel"><h2 class="sectiontitle">💬 文字互動測試</h2><div class="log" id="chatlog"></div><div class="row"><input id="chatinput" maxlength="160" placeholder="例：你好、你叫什麼名字？"><button id="send">送出</button></div><p class="hint">目前是離線規則式示範，尚不是會推理的 AI。真正本地模型將在後續版本整合。</p></section>
 <section class="panel"><h2 class="sectiontitle">⏰ 本機提醒清單</h2><label for="task">提醒內容</label><input id="task" maxlength="100" placeholder="例：喝水、開會、取包裹"><label for="when">提醒時間（手機當地時間）</label><input type="datetime-local" id="when"><div class="row"><button id="add">新增提醒</button><button class="secondary" id="test">測試提醒音效</button></div><div id="reminders"></div><p class="hint">重要：目前只會在本頁開啟且瀏覽器允許執行時檢查提醒，不可取代手機鬧鐘。背景／鎖屏提醒會在 Android APK 使用系統排程實作。</p></section>
@@ -14,14 +14,20 @@ const officialNames=['沐晴','若薇','月汐','樂橙','凜霜','星璃','安�
 const legacyNames=['甜美陪伴','成熟御姐','空靈夢幻','活潑元氣','高冷氣質','科技未來','療癒知心','時尚百變'];
 
 function fresh(){return {selected:0,roleIds:roleIds.slice(),names:officialNames.slice(),nameSchema:3,reminders:[],chat:[],voice:false}}
-let data=fresh();try{let v=JSON.parse(localStorage.getItem(key)||'null');if(v&&Array.isArray(v.names)&&v.names.length===8&&Array.isArray(v.reminders)&&Array.isArray(v.chat))data={...fresh(),...v}}catch(e){}
-// One-time migration: official names become the V0.3 initial names.
- // Existing reminders, chat and voice permission stay unchanged.
- // Subsequent user renames are retained on reload.
-if(data.nameSchema!==3){
-  data.names=officialNames.slice();
-  data.nameSchema=3;
-}
+let data=fresh();
+try{
+  const previous=JSON.parse(localStorage.getItem(key)||'null');
+  if(previous&&Array.isArray(previous.names)&&previous.names.length===8&&Array.isArray(previous.reminders)&&Array.isArray(previous.chat)){
+    data={...fresh(),...previous};
+  }
+}catch(e){}
+// Fix V0.3 migration: preserve individually customized names, but replace old role-category labels.
+// This also repairs the initial V0.3 release that prematurely set nameSchema to 3.
+data.names=data.names.map((name,i)=>{
+  const n=String(name||'').trim();
+  return !n||n===legacyNames[i] ? officialNames[i] : n;
+});
+data.nameSchema=3;
 data.roleIds=roleIds.slice();
 try{localStorage.setItem(key,JSON.stringify(data))}catch(e){}
 const $=id=>document.getElementById(id);const save=()=>{try{localStorage.setItem(key,JSON.stringify(data))}catch(e){alert('儲存失敗，可能是瀏覽器關閉了本機儲存。')}};
