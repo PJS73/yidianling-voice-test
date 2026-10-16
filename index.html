@@ -2,7 +2,7 @@
 <html lang="zh-Hant"><head><meta charset="utf-8"/><meta content="width=device-width,initial-scale=1,viewport-fit=cover" name="viewport"/><meta content="#151428" name="theme-color"/><title>億點靈 AI 小夥伴 V0.6.2</title><style>
 :root{color-scheme:dark;--bg:#111021;--card:#222039;--edge:#484360;--text:#f7f3ff;--muted:#c3bcda;--accent:#aa91ff}*{box-sizing:border-box}body{margin:0;font-family:system-ui,'Noto Sans TC',sans-serif;background:radial-gradient(circle at top,#383064,#111021 64%);color:var(--text);min-height:100dvh}main{max-width:640px;margin:auto;padding:24px 15px 90px}header{display:flex;align-items:center;justify-content:space-between}h1{font-size:23px;margin:0}small,p{color:var(--muted)}.pill{font-size:12px;border:1px solid #7d70ba;border-radius:99px;padding:6px 10px}.panel{background:#25213bdc;border:1px solid #534b73;border-radius:22px;padding:18px;margin-top:16px;box-shadow:0 12px 30px #0003}.avatar{height:230px;display:grid;place-items:center;position:relative}.person{font-size:108px;filter:drop-shadow(0 15px 16px #08071099);transition:transform .3s}.person.bounce{transform:translateY(-18px) rotate(-4deg)}.glow{position:absolute;width:180px;height:180px;background:#7d5ed577;filter:blur(60px);border-radius:50%;z-index:-1}.name{text-align:center;font-size:22px;font-weight:750}.type{text-align:center;color:#cfc4f6;font-size:13px;margin-top:4px}.bubble{border-radius:16px;background:#3b335c;padding:13px;margin:15px 0;min-height:52px;line-height:1.6}button,input,select{font:inherit}button{background:#7658d8;border:0;color:white;border-radius:13px;padding:11px 13px;font-weight:650;cursor:pointer}button.secondary{background:#403a5d}button:disabled{opacity:.5}input,select{background:#17162b;border:1px solid #655b86;border-radius:12px;color:white;padding:12px;min-width:0;width:100%}.controls{display:flex;gap:8px;flex-wrap:wrap}.controls>*{flex:1}.rolegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.role{background:#342d4f;min-height:90px;padding:8px 4px;border:1px solid transparent}.role.active{border-color:#caafff;background:#5a427f}.role span{display:block;font-size:30px;margin-bottom:5px}.role small{font-size:11px;color:#e3daf6}.row{display:flex;gap:8px;margin-top:9px}.row input{flex:1}.row button{white-space:nowrap}.log{max-height:180px;overflow-y:auto}.msg{margin:8px 0;padding:9px 12px;border-radius:12px;background:#302b47}.msg.me{background:#473b72}.reminder{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #554b70;padding:10px 0;gap:8px}.reminder div{min-width:0;overflow-wrap:anywhere}.reminder small{display:block}.sectiontitle{font-size:16px;font-weight:750;margin:0 0 12px}.hint{line-height:1.5;font-size:12px}.footer{margin-top:20px;font-size:12px;text-align:center;color:#b5aecd}label{font-size:13px;color:#ddd4f3;display:block;margin:8px 0 5px}input[type=checkbox]{width:auto;accent-color:#a88dff}.toggle{display:flex;gap:8px;align-items:center;margin:12px 0}.sr{position:absolute;left:-9999px}@media(max-width:350px){.rolegrid{grid-template-columns:repeat(2,1fr)}}
 .person{font-size:0;width:180px;height:230px;overflow:hidden;border-radius:22px;filter:drop-shadow(0 12px 18px #09071799)}.person img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 18%;border-radius:22px}.person.bounce{transform:translateY(-10px)}.role img{width:100%;height:75px;object-fit:cover;object-position:center 15%;border-radius:9px;display:block;margin-bottom:5px}.role{min-height:115px}.role small{overflow-wrap:anywhere}.hint.warning{color:#ffdeb0}.subcard{background:#312946;border:1px solid #53466f;border-radius:12px;padding:10px;margin-top:10px}.alias-list{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.aliaschip{padding:5px 9px;font-size:12px;border-radius:20px;background:#4e3b73;border:1px solid #7868ad}.aliaschip button{background:transparent;padding:0 0 0 8px}.mini{font-size:12px}.voice-ctrl{display:grid;grid-template-columns:1fr 1fr;gap:10px}.voice-ctrl input{width:100%}input[type=range]{accent-color:#a88dff;padding:0}.portrait-note{font-size:12px;color:#dbccf2;text-align:center;margin-top:4px}
-/* V0.6.6: deliberate edit mode, avoid accidental touches on scroll */
+/* V0.6.7: deliberate edit mode, avoid accidental touches on scroll */
 .section-title-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
 .edit-gear{font-size:13px;min-height:38px;min-width:75px;touch-action:manipulation}
 .section-body[hidden]{display:none!important}
@@ -12,7 +12,23 @@
 .panel[data-edit-lock="true"] .section-body:not(.editing) button{pointer-events:none;opacity:.55}
 .panel[data-edit-lock="true"] .section-body:not(.editing) .hint{opacity:.85}
 .section-edit-state{font-size:12px;color:var(--muted);margin:8px 0}
-</style><style>.fold-title{display:flex;align-items:center;justify-content:space-between;gap:8px}.section-fold{font-size:13px;min-height:42px;min-width:74px;flex:none;touch-action:manipulation}.section-body[hidden]{display:none!important}#manageReminders{min-height:44px}#reminders button{touch-action:manipulation}.subcard input,.subcard select{min-height:42px}#smartPreview{overflow-wrap:anywhere}</style></head><body><main><header><h1>✨ 億點靈 AI 小夥伴</h1><div class="pill">V0.6.6 智慧提醒與防誤觸</div></header><p class="hint">提醒依賴網頁開啟，鎖屏或離開網頁後可能延遲或失效。重複提醒不等於系統鬧鐘。 本頁不連接 Strata；語音辨識可能由瀏覽器的線上服務處理。按下說話才啟動單次辨識；關閉頁面後無法保證提醒持續運作。</p><section class="panel"><div class="avatar"><div class="glow"></div><div aria-label="角色人物圖片" class="person" id="person"></div></div><div class="name" id="who"></div><div class="type" id="type"></div><div class="bubble" id="bubble" role="status">你好，我在這裡！</div><div class="controls"><button id="greet">👋 打招呼</button><button class="secondary" id="speak">🔊 語音回覆</button><button class="secondary" id="mic">🎙️ 按下說話</button></div><p class="hint">🎤 按下說話後可說：「沐晴出來」、「叫星璃出來」、「億點靈，切換月汐」。每位角色都可以改名；不支援背景自動喚醒。常見同音字如「安和」對應安禾、「心理」對應星璃。請說完整指令如「叫心理出來」，避免誤判日常談話。</p><p class="hint" id="speechStatus">語音依瀏覽器及系統服務支援情況而定；部分語音辨識可能使用網路。</p></section>
+</style><style>.fold-title{display:flex;align-items:center;justify-content:space-between;gap:8px}.section-fold{font-size:13px;min-height:42px;min-width:74px;flex:none;touch-action:manipulation}.section-body[hidden]{display:none!important}#manageReminders{min-height:44px}#reminders button{touch-action:manipulation}.subcard input,.subcard select{min-height:42px}#smartPreview{overflow-wrap:anywhere}</style><style>
+.section-nav{position:sticky;top:0;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;background:#17132cef;padding:10px 2px 12px;border-bottom:1px solid #5b517d;margin:12px -4px 0;backdrop-filter:blur(14px)}
+.section-nav button{white-space:nowrap;min-height:46px;padding:9px 12px;background:#332d4e;border:1px solid #5b5375;font-size:13px;flex-shrink:0;touch-action:manipulation}
+.section-nav button.active{background:#7658d8;border-color:#ceb9ff;box-shadow:0 0 0 1px #b8a3ff}
+.tab-caption{font-size:12px;line-height:1.5;margin:10px 0 3px;padding:0 4px;color:#e0d5ff}
+section.panel[hidden]{display:none!important}
+.section-title-row{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.section-title-row .sectiontitle{margin:0}
+.edit-gear{min-height:44px;min-width:78px;touch-action:manipulation;flex-shrink:0}
+.section-body:not(.editing) input:not([type=hidden]),.section-body:not(.editing) select{touch-action:pan-y}
+</style></head><body><main><header><h1>✨ 億點靈 AI 小夥伴</h1><div class="pill">V0.6.7 智慧提醒與防誤觸</div></header><p class="hint">提醒依賴網頁開啟，鎖屏或離開網頁後可能延遲或失效。重複提醒不等於系統鬧鐘。 本頁不連接 Strata；語音辨識可能由瀏覽器的線上服務處理。按下說話才啟動單次辨識；關閉頁面後無法保證提醒持續運作。</p><nav id="sectionNav" class="section-nav" aria-label="功能分類">
+<button type="button" data-tab="home" class="active" aria-pressed="true">🏠 日常</button>
+<button type="button" data-tab="roles" aria-pressed="false">👥 角色</button>
+<button type="button" data-tab="voice" aria-pressed="false">🎙️ 聲音</button>
+<button type="button" data-tab="remind" aria-pressed="false">⏰ 提醒</button>
+<button type="button" data-tab="memory" aria-pressed="false">🧠 記憶</button>
+</nav><p class="tab-caption" id="tabCaption" role="status">日常：人物互動與聊天。需要提醒時請切換「提醒」。</p><section class="panel"><div class="avatar"><div class="glow"></div><div aria-label="角色人物圖片" class="person" id="person"></div></div><div class="name" id="who"></div><div class="type" id="type"></div><div class="bubble" id="bubble" role="status">你好，我在這裡！</div><div class="controls"><button id="greet">👋 打招呼</button><button class="secondary" id="speak">🔊 語音回覆</button><button class="secondary" id="mic">🎙️ 按下說話</button></div><p class="hint">🎤 按下說話後可說：「沐晴出來」、「叫星璃出來」、「億點靈，切換月汐」。每位角色都可以改名；不支援背景自動喚醒。常見同音字如「安和」對應安禾、「心理」對應星璃。請說完整指令如「叫心理出來」，避免誤判日常談話。</p><p class="hint" id="speechStatus">語音依瀏覽器及系統服務支援情況而定；部分語音辨識可能使用網路。</p></section>
 <section class="panel"><h2 class="sectiontitle">👥 八位角色・快速選擇</h2><div class="rolegrid" id="roles"></div></section><section class="panel" data-edit-lock="true"><h2 class="sectiontitle">🪞 外觀、名稱與照片</h2><label for="rename">目前角色的名稱（可隨時改）</label><div class="row"><input id="rename" maxlength="16" placeholder="輸入角色名稱"/><button id="saveName">儲存名字</button></div><div class="subcard"><label>🖼️ 角色圖片</label><input accept="image/png,image/jpeg,image/webp" id="portraitInput" type="file"/><button class="secondary mini" id="resetPortrait">還原預設圖片</button><p class="hint">2、3、5、6、8 號使用已選定的人物圖；1、4、7 號已更新為你選定的角色圖。你可以為每位角色上傳新圖片（圖片保存在這台手機此網站）。圖片建議小於 1 MB。</p></div><p class="hint">語音測試：按「🎙️ 按下說話」，直接叫角色名字或說「叫若薇出來」。每位角色固定 ID（role_01～role_08），改名不會更換 ID。</p></section><section class="panel" data-edit-lock="true"><h2 class="sectiontitle">🎙️ 角色專屬聲線</h2><div class="subcard"><h2 class="sectiontitle">🎙️ 角色專屬聲線</h2><label for="voiceSelect">目前角色使用的系統語音</label><select id="voiceSelect"></select><div class="voice-ctrl"><div><label for="rate">語速：<span id="rateText"></span></label><input id="rate" max="1.3" min="0.7" step="0.05" type="range"/></div><div><label for="pitch">音調：<span id="pitchText"></span></label><input id="pitch" max="1.5" min="0.7" step="0.05" type="range"/></div></div><div class="voice-ctrl"><div><label for="volume">音量：<span id="volumeText"></span></label><input id="volume" max="1" min="0" step="0.05" type="range"/></div><div><label for="voiceStyle">聲音風格預設</label><select id="voiceStyle"><option value="custom">自訂</option><option value="soft">輕柔</option><option value="bright">明亮</option><option value="calm">沉穩</option><option value="lively">元氣</option><option value="dreamy">夢幻</option></select></div></div><label for="previewText">試聽文字</label><input id="previewText" maxlength="120" value="你好，很高興見到你。今天想聊些什麼呢？"/><div class="row"><button class="secondary" id="voicePreview">試聽目前角色</button><button class="secondary" id="voiceReset">還原聲線</button></div><p class="hint">實際音色由手機已安裝的中文 TTS 聲音決定，預設風格只調整語速與音調，音量可單獨設定；不等於真實情緒、氣聲、笑聲或聲紋轉換。</p></div></section><section class="panel" data-edit-lock="true"><h2 class="sectiontitle">🎭 情緒與情境語音</h2><div class="subcard" id="emotionLab">
 <h2 class="sectiontitle">🎭 V0.5 情緒語音實驗室</h2>
 <label for="emotion">情緒語氣</label>
@@ -87,10 +103,10 @@
 <label class="toggle"><input id="ambientVoice" type="checkbox"/>自主互動時播放語音</label>
 <div class="row"><button id="ambientTest">立即測試自主互動</button></div>
 <p class="hint" id="ambientStatus">預設關閉；只有頁面正在前景執行時才可能觸發，不使用麥克風、不偵測其他 App。</p></section>
-<section class="panel" data-edit-lock="true"><h2 class="sectiontitle">🔒 記憶與隱私</h2><div class="toggle"><input id="voiceOn" type="checkbox"/><label for="voiceOn">允許本頁使用文字轉語音（不會自動開麥克風）</label></div><p class="hint">角色 ID、名字、語音別名、聲線設定、提醒、簡單對話及自訂圖片存在此瀏覽器的 localStorage。清除網站資料會使內容消失；目前未提供加密或雲端備份。</p><div class="controls"><button class="secondary" id="export">匯出 JSON 備份</button><button class="secondary" id="importBtn">匯入備份</button><button class="secondary" id="clear">清除全部資料</button></div><input accept="application/json,.json" class="sr" id="importFile" type="file"/></section><div class="footer">億點靈 V0.6.6 原型 · 手機獨立版 · 無 Strata 連線</div></main>
+<section class="panel" data-edit-lock="true"><h2 class="sectiontitle">🔒 記憶與隱私</h2><div class="toggle"><input id="voiceOn" type="checkbox"/><label for="voiceOn">允許本頁使用文字轉語音（不會自動開麥克風）</label></div><p class="hint">角色 ID、名字、語音別名、聲線設定、提醒、簡單對話及自訂圖片存在此瀏覽器的 localStorage。清除網站資料會使內容消失；目前未提供加密或雲端備份。</p><div class="controls"><button class="secondary" id="export">匯出 JSON 備份</button><button class="secondary" id="importBtn">匯入備份</button><button class="secondary" id="clear">清除全部資料</button></div><input accept="application/json,.json" class="sr" id="importFile" type="file"/></section><div class="footer">億點靈 V0.6.7 原型 · 手機獨立版 · 無 Strata 連線</div></main>
 </body></html><script>
 'use strict';
-// V0.6.6: separate role settings and lock accidental edits behind a gear.
+// V0.6.7: separate role settings and lock accidental edits behind a gear.
 (function initPanelSections(){
  document.querySelectorAll('section.panel').forEach(panel=>{
    const h=panel.querySelector(':scope > h2.sectiontitle');if(!h)return;
@@ -118,6 +134,38 @@
       body.hidden=true;btn.onclick=()=>{body.hidden=!body.hidden;btn.textContent=body.hidden?'展開':'收合';btn.setAttribute('aria-expanded',String(!body.hidden))};
    }
  });
+})();
+// V0.6.7 category navigation: only visibility changes; all role data remains intact.
+(function initCategoryNavigation(){
+ const tabs={
+  home:[0,1,8],roles:[0,1,2,7,11],voice:[0,1,3,4,5,6],
+  remind:[0,9],memory:[0,10,12]
+ };
+ const captions={
+  home:'日常：人物互動與聊天。需要提醒時請切換「提醒」。',
+  roles:'角色：選擇、外觀、名稱、語音別名與自主互動。',
+  voice:'聲音：系統聲線、情緒、試聽與 A/B 配對。',
+  remind:'提醒：新增、延後、完成及重複提醒。',
+  memory:'記憶：共用／個別記憶、匯出備份與隱私。'
+ };
+ const panels=[...document.querySelectorAll('section.panel')];
+ const nav=document.getElementById('sectionNav');
+ function show(tab,scroll){
+   (tabs[tab]||tabs.home);
+   panels.forEach((p,i)=>{p.hidden=!(tabs[tab]||tabs.home).includes(i)});
+   nav.querySelectorAll('[data-tab]').forEach(b=>{
+     const selected=b.dataset.tab===tab;
+     b.classList.toggle('active',selected);
+     b.setAttribute('aria-pressed',String(selected));
+   });
+   document.getElementById('tabCaption').textContent=captions[tab]||captions.home;
+   if(scroll)nav.scrollIntoView({behavior:'smooth',block:'start'});
+ }
+ nav.addEventListener('click',e=>{
+   const button=e.target.closest('[data-tab]');if(!button)return;
+   show(button.dataset.tab,true);
+ });
+ show('home',false);
 })();
 const defaults=[['甜美陪伴','甜美陪伴型','👩🏻‍🦰'],['成熟御姐','成熟御姐型','👩🏻‍💼'],['空靈夢幻','空靈夢幻型','🧝🏻‍♀️'],['活潑元氣','活潑元氣型','🙋🏻‍♀️'],['高冷氣質','高冷氣質型','👩🏻'],['科技未來','科技未來型','👩🏻‍🚀'],['療癒知心','療癒知心型','👩🏻‍🦱'],['時尚百變','時尚百變型','💃🏻']];
 const key='yidianling_proto_v01'; // Maintain prior storage and reminders
