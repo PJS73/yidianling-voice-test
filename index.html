@@ -1,6 +1,6 @@
 <!doctype html><html lang="zh-Hant"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#151428"><title>億點靈 AI 小夥伴 V0.6.2</title><style>
 :root{color-scheme:dark;--bg:#111021;--card:#222039;--edge:#484360;--text:#f7f3ff;--muted:#c3bcda;--accent:#aa91ff}*{box-sizing:border-box}body{margin:0;font-family:system-ui,'Noto Sans TC',sans-serif;background:radial-gradient(circle at top,#383064,#111021 64%);color:var(--text);min-height:100dvh}main{max-width:640px;margin:auto;padding:24px 15px 90px}header{display:flex;align-items:center;justify-content:space-between}h1{font-size:23px;margin:0}small,p{color:var(--muted)}.pill{font-size:12px;border:1px solid #7d70ba;border-radius:99px;padding:6px 10px}.panel{background:#25213bdc;border:1px solid #534b73;border-radius:22px;padding:18px;margin-top:16px;box-shadow:0 12px 30px #0003}.avatar{height:230px;display:grid;place-items:center;position:relative}.person{font-size:108px;filter:drop-shadow(0 15px 16px #08071099);transition:transform .3s}.person.bounce{transform:translateY(-18px) rotate(-4deg)}.glow{position:absolute;width:180px;height:180px;background:#7d5ed577;filter:blur(60px);border-radius:50%;z-index:-1}.name{text-align:center;font-size:22px;font-weight:750}.type{text-align:center;color:#cfc4f6;font-size:13px;margin-top:4px}.bubble{border-radius:16px;background:#3b335c;padding:13px;margin:15px 0;min-height:52px;line-height:1.6}button,input,select{font:inherit}button{background:#7658d8;border:0;color:white;border-radius:13px;padding:11px 13px;font-weight:650;cursor:pointer}button.secondary{background:#403a5d}button:disabled{opacity:.5}input,select{background:#17162b;border:1px solid #655b86;border-radius:12px;color:white;padding:12px;min-width:0;width:100%}.controls{display:flex;gap:8px;flex-wrap:wrap}.controls>*{flex:1}.rolegrid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.role{background:#342d4f;min-height:90px;padding:8px 4px;border:1px solid transparent}.role.active{border-color:#caafff;background:#5a427f}.role span{display:block;font-size:30px;margin-bottom:5px}.role small{font-size:11px;color:#e3daf6}.row{display:flex;gap:8px;margin-top:9px}.row input{flex:1}.row button{white-space:nowrap}.log{max-height:180px;overflow-y:auto}.msg{margin:8px 0;padding:9px 12px;border-radius:12px;background:#302b47}.msg.me{background:#473b72}.reminder{display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #554b70;padding:10px 0;gap:8px}.reminder div{min-width:0;overflow-wrap:anywhere}.reminder small{display:block}.sectiontitle{font-size:16px;font-weight:750;margin:0 0 12px}.hint{line-height:1.5;font-size:12px}.footer{margin-top:20px;font-size:12px;text-align:center;color:#b5aecd}label{font-size:13px;color:#ddd4f3;display:block;margin:8px 0 5px}input[type=checkbox]{width:auto;accent-color:#a88dff}.toggle{display:flex;gap:8px;align-items:center;margin:12px 0}.sr{position:absolute;left:-9999px}@media(max-width:350px){.rolegrid{grid-template-columns:repeat(2,1fr)}}
-.person{font-size:0;width:180px;height:230px;overflow:hidden;border-radius:22px;filter:drop-shadow(0 12px 18px #09071799)}.person img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 18%;border-radius:22px}.person.bounce{transform:translateY(-10px)}.role img{width:100%;height:75px;object-fit:cover;object-position:center 15%;border-radius:9px;display:block;margin-bottom:5px}.role{min-height:115px}.role small{overflow-wrap:anywhere}.hint.warning{color:#ffdeb0}.subcard{background:#312946;border:1px solid #53466f;border-radius:12px;padding:10px;margin-top:10px}.alias-list{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.aliaschip{padding:5px 9px;font-size:12px;border-radius:20px;background:#4e3b73;border:1px solid #7868ad}.aliaschip button{background:transparent;padding:0 0 0 8px}.mini{font-size:12px}.voice-ctrl{display:grid;grid-template-columns:1fr 1fr;gap:10px}.voice-ctrl input{width:100%}input[type=range]{accent-color:#a88dff;padding:0}.portrait-note{font-size:12px;color:#dbccf2;text-align:center;margin-top:4px}</style></head><body><main><header><h1>✨ 億點靈 AI 小夥伴</h1><div class="pill">V0.6.4.1 語音修正版</div></header><p class="hint">本頁不連接 Strata；語音辨識可能由瀏覽器的線上服務處理。按下說話才啟動單次辨識；關閉頁面後無法保證提醒持續運作。</p><section class="panel"><div class="avatar"><div class="glow"></div><div class="person" id="person" aria-label="角色人物圖片"></div></div><div class="name" id="who"></div><div class="type" id="type"></div><div class="bubble" id="bubble" role="status">你好，我在這裡！</div><div class="controls"><button id="greet">👋 打招呼</button><button id="speak" class="secondary">🔊 語音回覆</button><button id="mic" class="secondary">🎙️ 按下說話</button></div><p class="hint">🎤 按下說話後可說：「沐晴出來」、「叫星璃出來」、「億點靈，切換月汐」。每位角色都可以改名；不支援背景自動喚醒。常見同音字如「安和」對應安禾、「心理」對應星璃。請說完整指令如「叫心理出來」，避免誤判日常談話。</p><p class="hint" id="speechStatus">語音依瀏覽器及系統服務支援情況而定；部分語音辨識可能使用網路。</p></section>
+.person{font-size:0;width:180px;height:230px;overflow:hidden;border-radius:22px;filter:drop-shadow(0 12px 18px #09071799)}.person img{display:block;width:100%;height:100%;object-fit:cover;object-position:center 18%;border-radius:22px}.person.bounce{transform:translateY(-10px)}.role img{width:100%;height:75px;object-fit:cover;object-position:center 15%;border-radius:9px;display:block;margin-bottom:5px}.role{min-height:115px}.role small{overflow-wrap:anywhere}.hint.warning{color:#ffdeb0}.subcard{background:#312946;border:1px solid #53466f;border-radius:12px;padding:10px;margin-top:10px}.alias-list{display:flex;flex-wrap:wrap;gap:6px;margin:8px 0}.aliaschip{padding:5px 9px;font-size:12px;border-radius:20px;background:#4e3b73;border:1px solid #7868ad}.aliaschip button{background:transparent;padding:0 0 0 8px}.mini{font-size:12px}.voice-ctrl{display:grid;grid-template-columns:1fr 1fr;gap:10px}.voice-ctrl input{width:100%}input[type=range]{accent-color:#a88dff;padding:0}.portrait-note{font-size:12px;color:#dbccf2;text-align:center;margin-top:4px}</style><style>.fold-title{display:flex;align-items:center;justify-content:space-between;gap:8px}.section-fold{font-size:13px;min-height:42px;min-width:74px;flex:none;touch-action:manipulation}.section-body[hidden]{display:none!important}#manageReminders{min-height:44px}#reminders button{touch-action:manipulation}.subcard input,.subcard select{min-height:42px}#smartPreview{overflow-wrap:anywhere}</style></head><body><main><header><h1>✨ 億點靈 AI 小夥伴</h1><div class="pill">V0.6.5 智慧提醒與防誤觸</div></header><p class="hint">提醒依賴網頁開啟，鎖屏或離開網頁後可能延遲或失效。重複提醒不等於系統鬧鐘。 本頁不連接 Strata；語音辨識可能由瀏覽器的線上服務處理。按下說話才啟動單次辨識；關閉頁面後無法保證提醒持續運作。</p><section class="panel"><div class="avatar"><div class="glow"></div><div class="person" id="person" aria-label="角色人物圖片"></div></div><div class="name" id="who"></div><div class="type" id="type"></div><div class="bubble" id="bubble" role="status">你好，我在這裡！</div><div class="controls"><button id="greet">👋 打招呼</button><button id="speak" class="secondary">🔊 語音回覆</button><button id="mic" class="secondary">🎙️ 按下說話</button></div><p class="hint">🎤 按下說話後可說：「沐晴出來」、「叫星璃出來」、「億點靈，切換月汐」。每位角色都可以改名；不支援背景自動喚醒。常見同音字如「安和」對應安禾、「心理」對應星璃。請說完整指令如「叫心理出來」，避免誤判日常談話。</p><p class="hint" id="speechStatus">語音依瀏覽器及系統服務支援情況而定；部分語音辨識可能使用網路。</p></section>
 <section class="panel"><h2 class="sectiontitle">🎭 八位角色</h2><div class="rolegrid" id="roles"></div><label for="rename">目前角色的名稱（可隨時改）</label><div class="row"><input id="rename" maxlength="16" placeholder="輸入角色名稱"><button id="saveName">儲存名字</button></div><div class="subcard"><label>🖼️ 角色圖片</label><input id="portraitInput" type="file" accept="image/png,image/jpeg,image/webp"><button id="resetPortrait" class="secondary mini">還原預設圖片</button><p class="hint">2、3、5、6、8 號使用已選定的人物圖；1、4、7 號已更新為你選定的角色圖。你可以為每位角色上傳新圖片（圖片保存在這台手機此網站）。圖片建議小於 1 MB。</p></div><p class="hint">語音測試：按「🎙️ 按下說話」，直接叫角色名字或說「叫若薇出來」。每位角色固定 ID（role_01～role_08），改名不會更換 ID。</p><div class="subcard"><h2 class="sectiontitle">🎙️ 角色專屬聲線</h2><label for="voiceSelect">目前角色使用的系統語音</label><select id="voiceSelect"></select><div class="voice-ctrl"><div><label for="rate">語速：<span id="rateText"></span></label><input type="range" id="rate" min="0.7" max="1.3" step="0.05"></div><div><label for="pitch">音調：<span id="pitchText"></span></label><input type="range" id="pitch" min="0.7" max="1.5" step="0.05"></div></div><div class="voice-ctrl"><div><label for="volume">音量：<span id="volumeText"></span></label><input type="range" id="volume" min="0" max="1" step="0.05"></div><div><label for="voiceStyle">聲音風格預設</label><select id="voiceStyle"><option value="custom">自訂</option><option value="soft">輕柔</option><option value="bright">明亮</option><option value="calm">沉穩</option><option value="lively">元氣</option><option value="dreamy">夢幻</option></select></div></div><label for="previewText">試聽文字</label><input id="previewText" maxlength="120" value="你好，很高興見到你。今天想聊些什麼呢？"><div class="row"><button id="voicePreview" class="secondary">試聽目前角色</button><button id="voiceReset" class="secondary">還原聲線</button></div><p class="hint">實際音色由手機已安裝的中文 TTS 聲音決定，預設風格只調整語速與音調，音量可單獨設定；不等於真實情緒、氣聲、笑聲或聲紋轉換。</p></div><div class="subcard" id="emotionLab">
 <h2 class="sectiontitle">🎭 V0.5 情緒語音實驗室</h2>
 <label for="emotion">情緒語氣</label>
@@ -52,6 +52,14 @@
 <button id="quickParse" type="button" class="secondary">解析並建立提醒</button>
 <p id="quickStatus" class="hint" aria-live="polite">僅支援「N 分鐘後提醒我某事」「N 小時後提醒我某事」，不猜測模糊時間。</p>
 </div>
+<div class="subcard"><h3>📅 指定時間與重複提醒</h3><p class="hint">手機當地時間計算；先檢查預覽時間，再按建立。不猜測沒有說清楚的日期。</p>
+<label for="smartText">提醒內容</label><input id="smartText" maxlength="100" placeholder="例如：開會">
+<label for="scheduleKind">排程種類</label><select id="scheduleKind"><option value="once">指定日期（僅一次）</option><option value="daily">每天重複</option><option value="weekly">每週重複</option></select>
+<div id="onceSchedule"><label for="smartAt">日期與時間</label><input id="smartAt" type="datetime-local"></div>
+<div id="recurringSchedule" hidden><label for="smartClock">提醒時間</label><input type="time" id="smartClock" value="09:00"><div id="weeklySchedule" hidden><label for="smartDay">星期</label><select id="smartDay"><option value="1">星期一</option><option value="2">星期二</option><option value="3">星期三</option><option value="4">星期四</option><option value="5">星期五</option><option value="6">星期六</option><option value="0">星期日</option></select></div></div>
+<p id="smartPreview" class="hint" aria-live="polite">請設定時間</p><button type="button" id="smartAdd">確認建立排程</button>
+<label for="naturalSchedule">中文指定日期指令</label><input id="naturalSchedule" placeholder="明天下午3點提醒我開會；每天早上8點提醒我吃早餐"><button class="secondary" type="button" id="naturalAdd">解析並建立</button><p class="hint">支援今天、明天、後天、每天、每週星期一～日，以及明確的早上／下午／晚上時間；不清楚的指令會拒絕，不會亂猜。</p></div>
+<div class="row"><button id="manageReminders" class="secondary" type="button" aria-pressed="false">🔒 解鎖提醒管理</button></div><p class="hint" id="manageStatus">完成、延後、刪除按鈕目前鎖定，避免滑動時誤觸。</p>
 <label for="task">提醒內容</label><input id="task" maxlength="100" placeholder="例：喝水、開會、取包裹"><label for="when">提醒時間（手機當地時間）</label><input type="datetime-local" id="when"><div class="row"><button id="add">新增提醒</button><button class="secondary" id="test">測試提醒音效</button></div><div id="reminders"></div><p class="hint">提醒到期後會顯示「已通知」，可點「完成」或「+5分／+15分」再次安排。刪除前會要求確認。網頁可能因背景暫停而延遲提醒；請勿用於重要或緊急事項。</p><p class="hint">重要：目前只會在本頁開啟且瀏覽器允許執行時檢查提醒，不可取代手機鬧鐘。背景／鎖屏提醒會在 Android APK 使用系統排程實作。</p></section>
 <section class="panel"><h2 class="sectiontitle">🧠 本地記憶中心</h2>
 <p class="hint">只有你主動按「記住」才保存。共用記憶供八位角色查看；角色專屬記憶與固定 ID 綁定。這裡是本機備忘，不是已具備語意理解的 AI。</p>
@@ -67,9 +75,26 @@
 <label class="toggle"><input type="checkbox" id="ambientVoice">自主互動時播放語音</label>
 <div class="row"><button id="ambientTest">立即測試自主互動</button></div>
 <p id="ambientStatus" class="hint">預設關閉；只有頁面正在前景執行時才可能觸發，不使用麥克風、不偵測其他 App。</p></section>
-<section class="panel"><h2 class="sectiontitle">🔒 記憶與隱私</h2><div class="toggle"><input type="checkbox" id="voiceOn"><label for="voiceOn">允許本頁使用文字轉語音（不會自動開麥克風）</label></div><p class="hint">角色 ID、名字、語音別名、聲線設定、提醒、簡單對話及自訂圖片存在此瀏覽器的 localStorage。清除網站資料會使內容消失；目前未提供加密或雲端備份。</p><div class="controls"><button id="export" class="secondary">匯出 JSON 備份</button><button id="importBtn" class="secondary">匯入備份</button><button id="clear" class="secondary">清除全部資料</button></div><input class="sr" type="file" accept="application/json,.json" id="importFile"></section><div class="footer">億點靈 V0.6.4 原型 · 手機獨立版 · 無 Strata 連線</div></main>
+<section class="panel"><h2 class="sectiontitle">🔒 記憶與隱私</h2><div class="toggle"><input type="checkbox" id="voiceOn"><label for="voiceOn">允許本頁使用文字轉語音（不會自動開麥克風）</label></div><p class="hint">角色 ID、名字、語音別名、聲線設定、提醒、簡單對話及自訂圖片存在此瀏覽器的 localStorage。清除網站資料會使內容消失；目前未提供加密或雲端備份。</p><div class="controls"><button id="export" class="secondary">匯出 JSON 備份</button><button id="importBtn" class="secondary">匯入備份</button><button id="clear" class="secondary">清除全部資料</button></div><input class="sr" type="file" accept="application/json,.json" id="importFile"></section><div class="footer">億點靈 V0.6.5 原型 · 手機獨立版 · 無 Strata 連線</div></main>
 <script>
 'use strict';
+// Major-section collapsers; controls only exist within expanded sections.
+(function initPanelFolders(){
+ const panels=[...document.querySelectorAll('section.panel')];
+ panels.forEach((panel,i)=>{
+   const h=panel.querySelector(':scope > h2.sectiontitle');
+   if(!h)return; // avatar panel stays visible
+   const wrap=document.createElement('div');wrap.className='section-body';
+   while(h.nextSibling)wrap.appendChild(h.nextSibling);
+   panel.appendChild(wrap);h.classList.add('fold-title');
+   const btn=document.createElement('button');btn.type='button';btn.className='section-fold secondary';
+   btn.textContent='展開';btn.setAttribute('aria-expanded','false');
+   h.appendChild(btn);
+   const open=h.textContent.includes('本機提醒');
+   wrap.hidden=!open;btn.textContent=open?'收合':'展開';btn.setAttribute('aria-expanded',String(open));
+   btn.addEventListener('click',()=>{wrap.hidden=!wrap.hidden;btn.textContent=wrap.hidden?'展開':'收合';btn.setAttribute('aria-expanded',String(!wrap.hidden))});
+ });
+})();
 const defaults=[['甜美陪伴','甜美陪伴型','👩🏻‍🦰'],['成熟御姐','成熟御姐型','👩🏻‍💼'],['空靈夢幻','空靈夢幻型','🧝🏻‍♀️'],['活潑元氣','活潑元氣型','🙋🏻‍♀️'],['高冷氣質','高冷氣質型','👩🏻'],['科技未來','科技未來型','👩🏻‍🚀'],['療癒知心','療癒知心型','👩🏻‍🦱'],['時尚百變','時尚百變型','💃🏻']];
 const key='yidianling_proto_v01'; // Maintain prior storage and reminders
 const roleIds=Array.from({length:8},(_,i)=>'role_'+String(i+1).padStart(2,'0'));
@@ -188,7 +213,7 @@ function draw(){data.selected=Math.max(0,Math.min(7,Number(data.selected)||0));c
 function reminderStatus(r){return r.completed?'✅ 已完成':r.done?'🔔 已通知':r.at<=Date.now()?'⚠️ 已到時間':'⏳ 待提醒'}
 function drawReminders(){
  const sorted=data.reminders.slice().sort((a,b)=>Number(!!a.completed)-Number(!!b.completed)||a.at-b.at);
- $('reminders').innerHTML=sorted.length?sorted.map(r=>`<div class="reminder"><div><strong>${esc(r.text)}</strong><small>${new Date(r.at).toLocaleString('zh-TW')} · ${reminderStatus(r)}</small></div><div class="mini">${r.completed?'':`<button class="secondary mini" data-complete="${esc(r.id)}">完成</button> <button class="secondary mini" data-snooze="${esc(r.id)}" data-min="5">+5分</button> <button class="secondary mini" data-snooze="${esc(r.id)}" data-min="15">+15分</button>`} <button class="secondary mini" data-del="${esc(r.id)}">刪除</button></div></div>`).join(''):'<p class="hint">還沒有提醒事項</p>';
+ $('reminders').innerHTML=sorted.length?sorted.map(r=>`<div class="reminder"><div><strong>${esc(r.text)}</strong><small>${new Date(r.at).toLocaleString('zh-TW')} · ${r.repeat==='daily'?'每天重複 · ':r.repeat==='weekly'?'每週重複 · ':''}${reminderStatus(r)}</small></div><div class="mini">${!reminderManagement?'':r.completed?'':`<button class="secondary mini" data-complete="${esc(r.id)}">完成</button> <button class="secondary mini" data-snooze="${esc(r.id)}" data-min="5">+5分</button> <button class="secondary mini" data-snooze="${esc(r.id)}" data-min="15">+15分</button>`} <button class="secondary mini" data-del="${esc(r.id)}">刪除</button></div></div>`).join(''):'<p class="hint">還沒有提醒事項</p>';
 }
 
 function drawChat(){$('chatlog').innerHTML=data.chat.slice(-12).map(x=>`<div class="msg ${x.me?'me':''}">${x.me?'你':'角色'}：${esc(x.text)}</div>`).join('')||'<p class="hint">試著打個招呼吧</p>'; $('chatlog').scrollTop=$('chatlog').scrollHeight}
@@ -241,6 +266,64 @@ function roleCommand(s){
  const pick=hits[0];if(!pick)return null;
  data.selected=pick.i;return '好的，'+data.names[pick.i]+'來了！你可以繼續跟我說話。';
 }
+let reminderManagement=false;
+$('manageReminders').onclick=()=>{reminderManagement=!reminderManagement;$('manageReminders').textContent=reminderManagement?'🔓 鎖定提醒管理':'🔒 解鎖提醒管理';$('manageReminders').setAttribute('aria-pressed',String(reminderManagement));$('manageStatus').textContent=reminderManagement?'提醒操作已解鎖。修改後建議重新鎖定。':'完成、延後、刪除按鈕目前鎖定，避免滑動時誤觸。';drawReminders()};
+function nextOccurrence(repeat,hour,minute,weekday,now=new Date()){
+ const next=new Date(now);next.setHours(hour,minute,0,0);
+ if(repeat==='daily'){if(next<=now)next.setDate(next.getDate()+1)}
+ else if(repeat==='weekly'){let diff=(Number(weekday)-now.getDay()+7)%7;next.setDate(next.getDate()+diff);if(next<=now)next.setDate(next.getDate()+7)}
+ return next.getTime();
+}
+function createScheduledReminder(text,at,repeat='none',hour=null,minute=null,weekday=null){
+ if(!createReminder(text,at))return false;
+ const r=data.reminders[data.reminders.length-1];r.repeat=repeat;r.hour=hour;r.minute=minute;r.weekday=weekday;r.owner=data.selected;
+ save();drawReminders();return true;
+}
+const zhWeek={'一':1,'二':2,'三':3,'四':4,'五':5,'六':6,'日':0,'天':0};
+function zhClock(hour,minute,period){let h=Number(hour),m=Number(minute||0);
+ if(!Number.isInteger(h)||!Number.isInteger(m)||h<0||h>23||m<0||m>59)return null;
+ if(period){if(h<1||h>12)return null;if(/下午|晚上/.test(period)&&h<12)h+=12;if(/早上|上午|凌晨/.test(period)&&h===12)h=0;
+ // '中午12' is 12; '晚上12' means next-day midnight and is rejected as ambiguous.
+ if(period==='晚上'&&Number(hour)===12)return null;}
+ return [h,m]
+}
+function parseSmartSchedule(text){
+ const s=String(text||'').trim().replace(/[。！!]+$/g,'');
+ const p='(早上|上午|下午|晚上|中午|凌晨)?';
+ const clock='(\d{1,2})\s*(?:點|点|時|时|:)\s*(?:(\d{1,2})\s*分?)?';
+ let m=s.match(new RegExp('^(?:每週|每周|每星期)(?:星期|週|周)?([一二三四五六日天])\s*'+p+clock+'\s*(?:請)?提醒我\s*(.+)$'));
+ let repeat='none',day=null,at,parts,name;
+ if(m){repeat='weekly';day=zhWeek[m[1]];parts=zhClock(m[3],m[4],m[2]);name=m[5]}
+ else {m=s.match(new RegExp('^每天\s*'+p+clock+'\s*(?:請)?提醒我\s*(.+)$'));
+ if(m){repeat='daily';parts=zhClock(m[2],m[3],m[1]);name=m[4]}
+ else {m=s.match(new RegExp('^(今天|明天|後天|后天)\s*'+p+clock+'\s*(?:請)?提醒我\s*(.+)$'));
+ if(!m)return null;parts=zhClock(m[3],m[4],m[2]);name=m[5];if(!parts)return null;
+ const dt=new Date();dt.setDate(dt.getDate()+({'今天':0,'明天':1,'後天':2,'后天':2}[m[1]]));dt.setHours(parts[0],parts[1],0,0);at=dt.getTime();}
+ }
+ if(!parts||!name?.trim()||name.trim().length>100)return null;
+ if(repeat!=='none')at=nextOccurrence(repeat,parts[0],parts[1],day);
+ if(at<=Date.now())return null;
+ return {name:name.trim(),at,repeat,hour:parts[0],minute:parts[1],weekday:day};
+}
+function addParsedSchedule(str){const p=parseSmartSchedule(str);if(!p)return null;
+ return createScheduledReminder(p.name,p.at,p.repeat,p.hour,p.minute,p.weekday)?p:null;}
+function previewSchedule(){const mode=$('scheduleKind').value;
+ $('onceSchedule').hidden=mode!=='once';$('recurringSchedule').hidden=mode==='once';$('weeklySchedule').hidden=mode!=='weekly';
+ let at;if(mode==='once')at=new Date($('smartAt').value).getTime();else{const match=$('smartClock').value.match(/^(\d{2}):(\d{2})$/);if(match)at=nextOccurrence(mode,Number(match[1]),Number(match[2]),Number($('smartDay').value))}
+ $('smartPreview').textContent=Number.isFinite(at)&&at>Date.now()?'下次提醒：'+new Date(at).toLocaleString('zh-TW')+(mode==='once'?'（單次）':mode==='daily'?'（每天）':'（每週）'):'請選擇未來有效時間';
+}
+['scheduleKind','smartAt','smartClock','smartDay'].forEach(id=>$(id).addEventListener('change',previewSchedule));
+$('smartAdd').onclick=()=>{
+ const mode=$('scheduleKind').value,name=$('smartText').value.trim();if(!name)return alert('請填寫提醒內容');
+ const tm=mode==='once'?null:$('smartClock').value.match(/^(\d{2}):(\d{2})$/);
+ const hour=tm?Number(tm[1]):null,minute=tm?Number(tm[2]):null,day=mode==='weekly'?Number($('smartDay').value):null;
+ const at=mode==='once'?new Date($('smartAt').value).getTime():tm?nextOccurrence(mode,hour,minute,day):NaN;
+ if(!Number.isFinite(at)||at<=Date.now())return alert('請先選擇有效的未來時間');
+ if(!createScheduledReminder(name,at,mode==='once'?'none':mode,hour,minute,day))return alert('無法建立提醒');
+ $('smartText').value='';previewSchedule();say('已建立提醒：'+name);
+};
+$('naturalAdd').onclick=()=>{const p=addParsedSchedule($('naturalSchedule').value);if(!p)return alert('無法解析日期，請使用「明天下午3點提醒我開會」或「每天早上8點提醒我早餐」格式');$('naturalSchedule').value='';previewSchedule();say('已建立提醒：'+p.name)};
+previewSchedule();
 function createReminder(text,at){
  const t=String(text||'').trim();
  if(!t||t.length>100||!Number.isFinite(at)||at<=Date.now())return false;
@@ -278,10 +361,11 @@ $('quickParse').onclick=()=>{
  $('quickStatus').textContent='已設定：'+r.text+'；'+new Date(r.at).toLocaleString('zh-TW')+'（手機當地時間）';
  say('已安排提醒：'+r.text);
 };
-function sendChat(){const s=$('chatinput').value.trim();if(!s)return;data.chat.push({me:true,text:s});$('chatinput').value='';let answer=relativeReminderFromSpeech(s);if(answer){drawReminders();}else{answer=roleCommand(s);if(answer){save();draw();}}if(answer){/* 已處理語音指令 */}else if(/你叫什麼|你的名字|你是誰/.test(s))answer='我是'+data.names[data.selected]+'，也可以叫我億點靈。';else if(/你好|嗨|哈囉|hi/i.test(s))answer='嗨！很高興跟你說話。';else if(/提醒|鬧鐘/.test(s))answer='可以到下方提醒區新增時間與內容。';else if(/謝謝/.test(s))answer='不客氣，很高興能幫上忙。';else answer='我收到你說的「'+s.slice(0,30)+'」。目前還是原型，真正的 AI 對話功能會在後續加入。';data.chat.push({me:false,text:answer});data.chat=data.chat.slice(-40);save();drawChat();say(answer,true)}
+function sendChat(){const s=$('chatinput').value.trim();if(!s)return;data.chat.push({me:true,text:s});$('chatinput').value='';let answer=relativeReminderFromSpeech(s);if(!answer){const plan=addParsedSchedule(s);if(plan)answer='已建立提醒：'+plan.name+'，'+new Date(plan.at).toLocaleString('zh-TW')+'。';}if(answer){drawReminders();}else{answer=roleCommand(s);if(answer){save();draw();}}if(answer){/* 已處理語音指令 */}else if(/你叫什麼|你的名字|你是誰/.test(s))answer='我是'+data.names[data.selected]+'，也可以叫我億點靈。';else if(/你好|嗨|哈囉|hi/i.test(s))answer='嗨！很高興跟你說話。';else if(/提醒|鬧鐘/.test(s))answer='可以到下方提醒區新增時間與內容。';else if(/謝謝/.test(s))answer='不客氣，很高興能幫上忙。';else answer='我收到你說的「'+s.slice(0,30)+'」。目前還是原型，真正的 AI 對話功能會在後續加入。';data.chat.push({me:false,text:answer});data.chat=data.chat.slice(-40);save();drawChat();say(answer,true)}
 $('send').onclick=sendChat;$('chatinput').onkeydown=e=>{if(e.key==='Enter')sendChat()};
 $('add').onclick=()=>{const t=$('task').value.trim();const w=$('when').value;const at=new Date(w).getTime();if(!t||!w||!Number.isFinite(at)||at<=Date.now())return alert('請輸入提醒內容和未來時間');createReminder(t,at);$('task').value='';say('提醒已儲存在本頁；請注意關閉網頁後不保證提醒。')};
 $('reminders').onclick=e=>{
+ if(!reminderManagement){$('manageStatus').textContent='先點「解鎖提醒管理」才能操作。';return}
  const b=e.target.closest('button');if(!b)return;
  if(b.dataset.del){if(!confirm('確定刪除這筆提醒？'))return;data.reminders=data.reminders.filter(r=>r.id!==b.dataset.del)}
  else if(b.dataset.complete){const r=data.reminders.find(x=>x.id===b.dataset.complete);if(r){r.completed=true;r.done=true;say('提醒已標記完成。')}}
@@ -293,7 +377,13 @@ $('test').onclick=()=>{say('這是一則測試提醒。',true,'reminder');alert(
 function checkReminders(){
  let changed=false;const due=[];
  for(const r of data.reminders){
-  if(!r.done&&!r.completed&&Number.isFinite(Number(r.at))&&Date.now()>=r.at){r.done=true;changed=true;due.push(r.text)}
+  if(!r.done&&!r.completed&&Number.isFinite(Number(r.at))&&Date.now()>=r.at){
+  changed=true;due.push(r.text);
+  if((r.repeat==='daily'||r.repeat==='weekly')&&Number.isInteger(r.hour)&&Number.isInteger(r.minute)){
+    const previous=Number(r.at);const next=nextOccurrence(r.repeat,r.hour,r.minute,r.weekday);
+    if(next>previous){r.at=next;r.done=false;}else r.done=true;
+  }else r.done=true;
+ }
  }
  if(changed){save();drawReminders();const message=due.length===1?'提醒時間到了：'+due[0]:'有 '+due.length+' 筆提醒到時間：'+due.join('、');say(message,true,'reminder');alert('⏰ 億點靈提醒：'+due.join('；'))}
 }
